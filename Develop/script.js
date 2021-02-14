@@ -37,7 +37,10 @@ async function generatePassword(){
     if(counter === 0) window.alert("ERROR: You didn't select any option. Try again.");
     else{
       answer = window.confirm("Are you sure about your selections? Continue?");
-      if(!answer) counter = 0;
+      if(!answer){
+        passwordSelection = "";
+        counter = 0;
+      }
     }
   }
   var lenChunk = Math.floor(len/4);
