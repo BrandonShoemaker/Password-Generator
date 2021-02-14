@@ -40,7 +40,7 @@ async function generatePassword(){
       if(!answer) counter = 0;
     }
   }
-  var lenChunk = len/4;
+  var lenChunk = Math.floor(len/4);
   var lenDifference = len%4;
   let passChunkArray = [getPasswordChunk(lenChunk, passwordSelection),
                         getPasswordChunk(lenChunk, passwordSelection),
@@ -54,7 +54,8 @@ async function generatePassword(){
   for(var i = 0; i < passwordConcat.length; i++){
     password += passwordConcat[i];
   }
-  
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
 }
 
@@ -62,7 +63,7 @@ function getPasswordChunk(len, passwordSelection){
   var passwordChunk = "";
   return new Promise((resolve) => {
     for(var i = 0; i < len; i++){
-      passwordChunk += passwordSelection[getRandomValue(0, passwordSelection.len-1)];
+      passwordChunk += passwordSelection[getRandomValue(0, passwordSelection.length-1)];
     }
     resolve(passwordChunk);
   });
@@ -85,4 +86,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
