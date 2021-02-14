@@ -5,6 +5,8 @@ async function generatePassword(){
   var number = "0123456789";
   var special = "!\"#$%&\'()*+,-./:;<=>?@[\\ ]^_`{|}~";
   var passwordSelection = "";
+  var passwordConcat = "";
+  var password = "";
   var counter = 0;
   var answer;
   var len = parseInt(window.prompt("How long would you like your password to be?\nEnter a value between 8-128:"));
@@ -40,14 +42,27 @@ async function generatePassword(){
   }
   var lenChunk = len/4;
   var lenDifference = len%4;
-
+  let passChunkArray = [getPasswordChunk(lenChunk, passwordSelection),
+                        getPasswordChunk(lenChunk, passwordSelection),
+                        getPasswordChunk(lenChunk, passwordSelection),
+                        getPasswordChunk(lenChunk, passwordSelection)
+                       ];
+  passwordConcat = await Promise.all(passChunkArray); 
+  for(var i = 0; i < lenDifference; i++){
+    password += passwordSelection[getRandomValue(0, passwordSelection.length-1)];
+  }
+  for(var i = 0; i < passwordConcat.length; i++){
+    password += passwordConcat[i];
+  }
+  
 
 }
 
 function getPasswordChunk(len, passwordSelection){
+  var passwordChunk = "";
   return new Promise((resolve) => {
     for(var i = 0; i < len; i++){
-      
+      passwordChunk += passwordSelection[getRandomValue(0, passwordSelection.len-1)];
     }
     resolve(passwordChunk);
   });
