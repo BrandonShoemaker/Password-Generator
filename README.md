@@ -30,3 +30,15 @@ I decided to learn asynchronous programming for JS, and by the end of this while
 
 ## Deployed Project
 
+https://brandonshoemaker.github.io/Password-Generator/
+
+## Installation
+
+1. Navigate with cd to your desired directory via your GIT bash. 
+1,2. (If you don't have GIT bash) Follow this link to download GIT bash and follow their instructions: https://git-scm.com/download/win
+2. Once in the desired directory, type the following command: git clone git@github.com:coding-boot-camp/friendly-parakeet.git
+3. Profit
+
+## Contributors
+
+HTML/CSS: Xandromus, JS: Mostly Brandon Shoemaker
